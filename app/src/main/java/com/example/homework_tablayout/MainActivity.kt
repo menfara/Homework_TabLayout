@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewPager() {
         val adapter = ImagePagerAdapter(this, images)
         binding.viewPager.adapter = adapter
+        binding.viewPager.setPageTransformer(CustomPageTransformer())
     }
 
     private fun setupTabLayout() {
@@ -44,7 +45,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createTabImageView(position: Int): ImageView {
-        val imageView = LayoutInflater.from(this).inflate(R.layout.tab_custom_layout, null) as ImageView
+        val imageView =
+            LayoutInflater.from(this).inflate(R.layout.tab_custom_layout, null) as ImageView
         imageView.setImageResource(images[position])
         return imageView
     }
